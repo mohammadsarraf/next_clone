@@ -1,13 +1,13 @@
 .sideNavbar {
+  position: fixed;
   display: flex;
   flex-direction: column;
   background-color: #0a0a1e;
   width: 250px;
   height: 100vh;
-  padding: 10px;
+  padding-left: 10px;
   margin-left: -10px;
-
-  /* transform: scale(0.95); */
+  margin-top: -10px;
 }
 
 /* Calculate effective width considering padding and border */
@@ -24,6 +24,8 @@
   transition: background-color 0.3s ease;
   background-color: rgba(49, 42, 42, 0.144);
   color: #1d64f2;
+ stroke-dasharray: a;
+ 
 }
 
 .button-container,
