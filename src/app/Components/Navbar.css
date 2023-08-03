@@ -1,0 +1,100 @@
+.sideNavbar {
+  display: flex;
+  flex-direction: column;
+  background-color: #0a0a1e;
+  width: 250px;
+  height: 100vh;
+  padding: 10px;
+  margin-left: -10px;
+
+  /* transform: scale(0.95); */
+}
+
+/* Calculate effective width considering padding and border */
+.button-container,
+.button-container-back,
+.search-bar-container {
+  box-sizing: border-box; /* Include padding and border in the element's width calculation */
+  width: 100%; /* Set the width to 100% to fill the container */
+  /* border-color: red; */
+}
+
+.button-container:hover,
+.search-bar-container:hover {
+  transition: background-color 0.3s ease;
+  background-color: rgba(49, 42, 42, 0.144);
+  color: #1d64f2;
+}
+
+.button-container,
+.button-container-back,
+.search-bar-container {
+  margin-bottom: 4%;
+}
+
+/* Remove margin from the last element to avoid extra space at the end */
+.search-bar-container:last-child,
+.button-container:last-child {
+  margin-bottom: 0;
+}
+
+.button-container-back {
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+/* Styles for button containers */
+.button-container,
+.button-container-back {
+  display: inline-flex;
+  align-items: center;
+  border: 2px solid transparent;
+  background-color: transparent;
+  padding: 10px; /* Adjust padding to make both elements equal */
+  border: 2px solid rgba(49, 42, 42, 0.144); /* Red border */
+  border-radius: 0; /* Set border-radius to 0 for both button containers and the search bar */
+  cursor: pointer;
+  text-decoration: none;
+  color: #ffffff;
+  width: 100%; /* Make both elements the same width */
+  transition: background-color 0.3s ease; /* Add a transition for smooth animation */
+}
+
+.button-container-back{
+  border: 2px solid transparent;
+}
+/* Styles for button icons and names */
+.button-icon,
+.button-icon-back,
+.search-icon {
+  width: 24px; /* Adjust the icon size as needed */
+  height: 24px;
+  margin-right: 8px;
+}
+
+.button-name,
+.button-name-back {
+  margin: 0; /* Remove default margin to avoid unwanted spacing */
+  font-size: 25px;
+  margin-left: 8px;
+}
+
+
+/* Styles for the search bar container */
+.search-bar-container {
+  display: flex;
+  align-items: center;
+  border: 2px solid #ccc; /* Add a border for better visibility (optional) */
+  background-color: transparent;
+  padding: 10px; /* Adjust the padding to increase the overall size */
+  border: 2px solid rgba(49, 42, 42, 0.144); /* Red border */
+  width: 100%; /* Set the width to 100% to fill the container */
+}
+
+/* Styles for the search bar input */
+.search-bar {
+  min-width: auto;
+  border: 2px solid transparent;
+  background-color: transparent;
+  color: white;
+  outline: none;
+}
