@@ -6,7 +6,7 @@ export default function ComposerBox() {
         <div className="box">
             <div className='top-bar'>
                 <FaUser  className="user-icon" />
-                <input type='text' className='input-bar' placeholder='Type something...'></input>
+                <input type='text' className='input-bar' placeholder="What's on your mind?"></input>
             </div>
             <div className='bot-bar'>
                 <div className='left-div'>

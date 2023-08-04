@@ -2,7 +2,8 @@
   position: fixed;
   display: flex;
   flex-direction: column;
-  background-color: #0a0a1e;
+  background-color: #80808014;
+  outline: 1px solid #ffffff0e;
   width: 250px;
   height: 100vh;
   padding-left: 10px;
@@ -24,7 +25,6 @@
   transition: background-color 0.3s ease;
   background-color: rgba(49, 42, 42, 0.144);
   color: #1d64f2;
- stroke-dasharray: a;
  
 }
 

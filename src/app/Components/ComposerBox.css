@@ -2,9 +2,11 @@
 
 .box {
     width: 80vh; /* Adjust width to your preference */
-    border: 1px solid #ccc; /* Add a border to the box if you want */
+    border: 1px solid #ffffff15; /* Add a border to the box if you want */
     border-radius: 10px;
     margin-left: 260px;
+    width:400px;
+    background-color: #80808014;
 }
 
 .top-bar {
@@ -27,7 +29,7 @@
     height: 30px;
     padding: 5px 10px;
     border: 1px solid transparent;
-    background-color: #21252996;
+    background-color: #8080801d;
     border-radius: 20px; /* Make it circular */
     outline: none; /* Remove the outline on click */
     color: #ffffff;
@@ -71,7 +73,7 @@
 
 .post-button {
     padding: 5px;
-    background-color: #212529;
+    background-color: #8080801d;
     color: #fff;
     border: none;
     border-radius: 10px;
