@@ -1,0 +1,198 @@
+.Post {
+    width: 600px;
+    border: 1px solid #ffffff15;
+    border-radius: 10px;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 4px;
+    background-color: #80808014;
+    box-sizing: border-box;
+}
+.post-comment {
+    width: 600px;
+    border: 1px solid #ffffff15;
+    border-radius: 10px;
+    padding: 10px;
+    padding-top: 0px;
+    margin-top: -1px;
+    border-radius: 4px;
+    background-color: #80808014;
+    box-sizing: border-box;
+}
+.info {
+    display: flex;
+    align-items: center;
+}
+
+.profile-picture {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #ffffff;
+    margin-right: 10px;
+}
+
+.profile-picture svg {
+    display: center;
+    color: blue;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.user-info {
+    flex: 1;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.profile-name {
+    width: 100px;
+    height: 16px;
+    margin-bottom: 5px;
+}
+
+.time-stamp {
+    width: 70px;
+    height: 12px;
+}
+
+.options {
+    width: 20px;
+    height: 20px;
+    background-color: transparent;
+}
+
+
+.content {
+    margin-top: 10px;
+}
+
+.content-text {
+    height: 80px;
+    margin-bottom: 10px;
+}
+
+.content-picture {
+    width: 100%;
+    
+    object-fit: cover;
+}
+
+
+.social-bar {
+
+    display: flex;
+    justify-content: center; /* Add this line */
+
+}
+
+.icon-like {
+    width: 20px;
+    height: 20px;
+}
+
+.icon-comment {
+    width: 20px;
+    height: 20px;
+    margin-right: 150px;
+    margin-left: 150px;
+}
+
+.icon-share {
+    width: 20px;
+    height: 20px;
+}
+
+.social-button-first,
+.social-button-second,
+.social-button-third{
+    display: flex;
+    align-items: center;
+    background-color: transparent;
+    border: 2px solid transparent;
+    padding: 5px;
+    border-radius: 4px;
+    color: #ffffff;
+    transition: background-color 0.3s ease;
+}
+
+.social-button-first:hover .social-icon,
+.social-button-second:hover .social-icon,
+.social-button-third:hover .social-icon{
+  /* Define the styles for the icon when button is hovered */
+  /* For example, change the color to red */
+  color: #1d64f2;
+}
+
+.social-button-first:hover .social-name,
+.social-button-second:hover .social-name,
+.social-button-third:hover .social-name  {
+  /* Define the styles for the text when button is hovered */
+  /* For example, change the color to blue */
+  color: #1d64f2;
+}
+
+.social-button-second {
+    margin-left: 90px;
+    margin-right: 90px;
+}
+.social-icon {
+    margin-right: 5px; /* Adjust the spacing between the icon and the name */
+}
+
+.social-name {
+    margin-right: 15px; /* Adjust the spacing between the name and the number */
+}
+
+.social-text{
+    background-color: #1d64f23c;
+    border-radius: 10px;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+/* comment section */
+
+.comment-top-bar {
+    position: relative; /* Add position relative to make absolute positioning work */
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    outline: none;
+}
+
+.comment-user-icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #ffffff; /* You can use any color you want */
+    margin-right: 10px;
+    color: #ffffff;
+}
+
+.comment-input-bar {
+    flex: 1;
+    height: 30px;
+    padding: 5px 10px;
+    border: 1px solid transparent;
+    background-color: #8080801d;
+    border-radius: 20px; /* Make it circular */
+    outline: none; /* Remove the outline on click */
+    color: #ffffff;
+    width: 540px;
+}
+
+.comment-icons {
+    position: absolute; /* Position the icons absolutely inside the input bar */
+    right: 10px; /* Adjust the right position to create space from the right edge */
+    top: 50%; /* Center the icons vertically */
+    transform: translateY(-50%); /* Adjust vertical centering */
+}
+
+.icon {
+    font-size: 20px;
+    margin-left: 4px; /* Adjust the space between icons */
+    cursor: pointer;
+    color: #ffffff; /* You can change the icon color as needed */
+}
