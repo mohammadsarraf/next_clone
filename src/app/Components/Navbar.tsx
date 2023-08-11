@@ -19,7 +19,7 @@ export default function Navbar() {
                 ></input>
             </div>
 
-            <Link className="button-container" href="/">
+            <Link className="button-container" href="/notes">
                 <FaHome className="button-icon" />
                 <p className="button-name">Home</p>
             </Link>

@@ -5,7 +5,7 @@ import './AppNavbar.css';
 export default function AppNavbar(props: any) {
     const [showImagePopup, setShowImagePopup] = useState(false);
 
-    const handleImageChange = (event) => {
+    const handleImageChange = (event: any) => {
         const file = event.target.files[0];
         props.onImageChange(file);
         setShowImagePopup(false);

@@ -7,7 +7,7 @@ const content = `Well, this is interesting. #BaldursGate3 uses "Point & Click" m
 export default function MainContent(porps: any) {
     return(
         <div className='main-content'>
-            <ComposerBox username={`Moe`}/>
+            <ComposerBox username={`2MSTR000`}/>
             <Post username={`John Doe`} content={content}/>
 
         </div>

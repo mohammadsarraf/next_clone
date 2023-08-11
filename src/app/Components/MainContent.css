@@ -1,6 +1,6 @@
 .main-content {
     display: flex;
     flex-direction: column;
-    /* margin-left: 400px; */
+    margin-left: 400px;
     margin-top: 30px;
 }
