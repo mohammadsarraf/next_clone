@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore, collection, doc, setDoc, addDoc, getDocs, serverTimestamp } from 'firebase/firestore';
-import { getAuth, signOut, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth';
+import { getAuth, signOut, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, updateProfile } from 'firebase/auth';
 import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 
 const firebaseConfig = {
@@ -39,6 +39,21 @@ export const handlePost = async (content: string, username: string) => {
             
         } catch (error) {
             console.error('Error uploading post', error);
+        }
+    }
+};
+
+export const handleDisplayNameUpdate = async (user, displayName) => {
+    console.log("Hello")
+    if (user && displayName) {
+        console.log(user)
+        try {
+            // Update the user's display name in Firebase
+            await updateProfile(user, { displayName: displayName });
+            console.log('Display name updated successfully');
+
+        } catch (error) {
+            console.error('Error updating display name', error);
         }
     }
 };

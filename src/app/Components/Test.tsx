@@ -1,12 +1,21 @@
 'use client';
 
-function Test(props: any) {
+function Test(props) {
     return (
         <div>
             {props.user ? (
                 <div>
-                    <h1>Welcome, User!</h1>
+                    <h1>Welcome, {props.user.displayName}!</h1>
                     <p>Welcome! <br /> {props.user.email}</p>
+                    <div>
+                        <label>Display Name:</label>
+                        <input
+                            type='text'
+                            value={props.displayName}
+                            onChange={(e) => props.onDisplayNameChange(e.target.value)}
+                        />
+                    </div>
+                    <button onClick={props.onUpdateDisplayName}>Update Display Name</button>
                     <button onClick={props.onLogout}>Logout</button>
                 </div>
             ) : (
