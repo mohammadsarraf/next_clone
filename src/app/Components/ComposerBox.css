@@ -4,15 +4,16 @@
     width: 80vh; /* Adjust width to your preference */
     border: 1px solid #ffffff15; /* Add a border to the box if you want */
     border-radius: 10px;
-
-    width:600px;
+    width: 800px;
     background-color: #80808014;
+    margin-bottom: 10px;
 }
 
 .top-bar {
     display: flex;
     align-items: center;
     padding: 10px;
+    /* Remove the fixed height from .top-bar */
 }
 
 .user-icon {
@@ -25,14 +26,24 @@
 }
 
 .input-bar {
-    flex: 1;
-    height: 30px;
-    padding: 5px 10px;
-    border: 1px solid transparent;
-    background-color: #8080801d;
-    border-radius: 20px; /* Make it circular */
-    outline: none; /* Remove the outline on click */
-    color: #ffffff;
+  
+  flex: 1;
+  min-height: 20px;
+  padding: 10px;
+  border: 1px solid transparent;
+  background-color: #8080801d;
+  border-radius: 20px; /* Make it circular */
+  outline: none; /* Remove the outline on click */
+  color: #ffffff;
+  
+  /* Additional styles to make it look like an input */
+  resize: none; /* Disable textarea resizing */
+  font-family: inherit; /* Use the same font family as other elements */
+  font-size: 14px; /* Adjust font size as needed */
+  margin: 0; /* Remove default margin */
+  width: 100%; /* Take up full width */
+  overflow-y: hidden; /* Hide vertical scrollbar */
+  
 }
 
 .bot-bar {

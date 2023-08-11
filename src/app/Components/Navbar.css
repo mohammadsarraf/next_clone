@@ -1,30 +1,37 @@
+.home-link {
+    color: white;
+}
 .sideNavbar {
   position: fixed;
   display: flex;
   flex-direction: column;
   background-color: #80808014;
   outline: 1px solid #ffffff0e;
-  width: 250px;
+  width: 300px;
   height: 100vh;
   padding-left: 10px;
+  padding-right: 10px;
   margin-left: -10px;
   margin-top: -10px;
+  align-items: center; /* Vertically center the elements */
 }
 
 /* Calculate effective width considering padding and border */
 .button-container,
 .button-container-back,
 .search-bar-container {
-  box-sizing: border-box; /* Include padding and border in the element's width calculation */
-  width: 100%; /* Set the width to 100% to fill the container */
-  /* border-color: red; */
+  display: flex;
+  box-sizing: border-box;
+  border-radius: 10px;;
+
 }
 
 .button-container:hover,
 .search-bar-container:hover {
   transition: background-color 0.3s ease;
-  background-color: rgba(49, 42, 42, 0.144);
-  color: #1d64f2;
+  background-color: #8080801d;
+  color: #1d64f2c4;
+  border-radius: 10px;
  
 }
 
@@ -41,8 +48,18 @@
 }
 
 .button-container-back {
-  margin-top: 10px;
-  margin-bottom: 20px;
+  margin-top: 20px;
+  margin-left: -10px;
+  margin-right: -10px;
+  margin-bottom: 30px;
+  transform: scale(1.5);
+  transform-origin: top left; /* Set the transform origin to the top left corner */
+
+}
+
+.button-icon-back,
+.button-name-back{
+  color:#1d64f2;
 }
 /* Styles for button containers */
 .button-container,
@@ -52,7 +69,7 @@
   border: 2px solid transparent;
   background-color: transparent;
   padding: 10px; /* Adjust padding to make both elements equal */
-  border: 2px solid rgba(49, 42, 42, 0.144); /* Red border */
+  
   border-radius: 0; /* Set border-radius to 0 for both button containers and the search bar */
   cursor: pointer;
   text-decoration: none;
@@ -85,10 +102,9 @@
 .search-bar-container {
   display: flex;
   align-items: center;
-  border: 2px solid #ccc; /* Add a border for better visibility (optional) */
   background-color: transparent;
   padding: 10px; /* Adjust the padding to increase the overall size */
-  border: 2px solid rgba(49, 42, 42, 0.144); /* Red border */
+  border: 2px solid #8080801d; /* Red border */
   width: 100%; /* Set the width to 100% to fill the container */
 }
 
@@ -99,4 +115,5 @@
   background-color: transparent;
   color: white;
   outline: none;
+  width: 100%;
 }

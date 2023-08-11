@@ -4,14 +4,16 @@
     align-items: center;
     background-color: #80808014;
     outline: 1px solid #ffffff0e;
-    padding: 10px ; /* Set vertical padding to 10px and horizontal padding to 0 */
-    margin: -10px 0 10px 0; /* Set vertical margin to -10px and horizontal margin to 0 */
-    margin-left: 250px;
+    padding: 10px;
+    margin: -10px 0 10px 0;
+    margin-left: 312px;
+    height: 50px;
 }
 
-
-.route-icon{
+.route-icon {
     margin-right: 10px;
+    width: 20px;
+    height: 20px;
 }
 
 .right-side,
@@ -23,25 +25,37 @@
 .user-info {
     display: flex;
     align-items: center;
+}
+
+.username {
     margin-right: 10px;
 }
 
-.user-info svg {
-    width: 30px;
-    height: 30px;
-    margin-right: 5px;
-    margin-left: 10px;
+
+.user-profile {
+    margin-right: 20px;
+    display: flex;
+    align-items: center;
 }
 
-.user-info span {
+.profile-picture {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+    
+}
+
+.profile-name {
+    font-size: 18px;
+    margin-right: 10px;
     font-weight: bold;
 }
 
-.feed-actions{
+.feed-actions {
     margin-left: 30px;
     background-color: #80808014;
     padding: 5px;
-
 }
 
 .feed-actions button {
@@ -58,15 +72,15 @@
     cursor: pointer;
 }
 
-
-.feed-dm{
-    margin-right:30px;
+.feed-dm {
+    margin-right: 30px;
 }
 
 .feed-dm svg {
     width: 20px;
     height: 20px;
 }
+
 .direct-message {
     margin-right: 10px;
 }

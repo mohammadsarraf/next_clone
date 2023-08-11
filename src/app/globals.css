@@ -1,20 +1,19 @@
 body {
-  background-color: #000000e4;
-  color: #ffffff;
-
+    background-color: #000000e4;
+    color: #ffffff;
 }
 
 .App {
-  padding: 0;
-  height: 100vh;
+    padding: 0;
+    height: 100vh;
 }
 
 .Navbar {
-  flex: 0 0 auto;
-  margin-top: 100000px;
+    flex: 0 0 auto;
+    margin-top: 100000px;
 }
 
 .ComposerBox {
-  flex: 1 1 auto;
-  margin-left: 3000px;
+    flex: 1 1 auto;
+    margin-left: 3000px;
 }
