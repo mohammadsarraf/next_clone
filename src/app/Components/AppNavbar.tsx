@@ -32,7 +32,7 @@ export default function AppNavbar(props: any) {
                     <FaFonticons />
                 </div>
                 <div className="user-profile">
-                    <p className="profile-name">{props.username}</p>
+                    <div className="profile-name">{props.username}</div>
                     <FaUserAlt classname="profile-picture" onClick={() => setShowImagePopup(true)} />
                 </div>
             </div>
