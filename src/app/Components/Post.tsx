@@ -8,9 +8,10 @@ import React, { useState } from 'react';
 interface  Props{
     username: string;
     content: string;
+    timestamp: string;
 }
 
-const Post: React.FC<Props> = ({username, content}) =>{
+const Post: React.FC<Props> = ({username, content, timestamp}) =>{
     const [isExpanded, setIsExpanded] = useState(true)
 
     const handleIsEpanded = () => {
@@ -25,7 +26,7 @@ const Post: React.FC<Props> = ({username, content}) =>{
                         <div className='profile-picture'>{/* <FaUserAlt /> */}</div>
                         <div className='user-info'>
                             <div className='profile-name'>{username}</div>
-                            <div className='time-stamp'>12h ago</div>
+                            {/* <div className='time-stamp'>{timestamp}</div> */}
                         </div>
                         <div className='options'>
                             <FaEllipsisV />
@@ -71,7 +72,7 @@ const Post: React.FC<Props> = ({username, content}) =>{
                         <div className='profile-picture'>{/* <FaUserAlt /> */}</div>
                         <div className='user-info'>
                             <div className='profile-name'>{username}</div>
-                            <div className='time-stamp'>12h ago</div>
+                            {/* <div className='time-stamp'>12h ago</div> */}
                         </div>
                         <div className='options'>
                             <FaEllipsisV />

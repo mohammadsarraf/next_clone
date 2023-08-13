@@ -19,9 +19,28 @@ const auth = getAuth(app);
 
 
 //User writing in composerBox
-export const getDatabase = () => {
-    return db
-}
+
+export const handleDisplayNameUpdate = async (user, displayName) => {
+    console.log("Hello")
+    if (user && displayName) {
+        console.log(user)
+        try {
+            // Update the user's display name in Firebase
+            await updateProfile(user, { displayName: displayName });
+            console.log('Display name updated successfully');
+
+        } catch (error) {
+            console.error('Error updating display name', error);
+        }
+    }
+};
+
+// firebaseFunctions.js
+
+
+
+
+import { getDocs, collection } from 'firebase/firestore';
 
 export const fetchTweets = async (db) => {
     try {
@@ -64,20 +83,6 @@ export const handlePost = async (db, content, username, setTweetsData, tweetsDat
     }
 };
 
-export const handleDisplayNameUpdate = async (user: any, displayName: any) => {
-    console.log("Hello")
-    if (user && displayName) {
-        console.log(user)
-        try {
-            // Update the user's display name in Firebase
-            await updateProfile(user, { displayName: displayName });
-            console.log('Display name updated successfully');
-
-        } catch (error) {
-            console.error('Error updating display name', error);
-        }
-    }
-};
 
 // export async function getUserPosts(userId: string) {
 //     try {

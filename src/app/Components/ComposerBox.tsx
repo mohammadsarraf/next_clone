@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './ComposerBox.css';
 import * as fb from '../functions/Class';
 import { FaUser, FaCamera, FaImage, FaPaperclip, FaLocationArrow, FaSmile, FaEdit } from 'react-icons/fa';
@@ -11,42 +11,48 @@ import {
     serverTimestamp,
 } from 'firebase/firestore';
 import { getAuth } from 'firebase/auth';
+import { getDatabase } from 'firebase/database';
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
-    apiKey: "AIzaSyDfGtvjHibH_VQNi3fIFxoJEI-_RzbrHCw",
-    authDomain: "twitter-clone-10996.firebaseapp.com",
-    databaseURL: "https://twitter-clone-10996-default-rtdb.firebaseio.com",
-    projectId: "twitter-clone-10996",
-    storageBucket: "twitter-clone-10996.appspot.com",
-    messagingSenderId: "617659631276",
-    appId: "1:617659631276:web:e7e713dfc82f3573244109",
-    measurementId: "G-3FDM8VPR8Q"
-};
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
-const auth = getAuth(app);
+// const firebaseConfig = {
+//     apiKey: "AIzaSyDfGtvjHibH_VQNi3fIFxoJEI-_RzbrHCw",
+//     authDomain: "twitter-clone-10996.firebaseapp.com",
+//     databaseURL: "https://twitter-clone-10996-default-rtdb.firebaseio.com",
+//     projectId: "twitter-clone-10996",
+//     storageBucket: "twitter-clone-10996.appspot.com",
+//     messagingSenderId: "617659631276",
+//     appId: "1:617659631276:web:e7e713dfc82f3573244109",
+//     measurementId: "G-3FDM8VPR8Q"
+// };
+// const app = initializeApp(firebaseConfig);
+// const db = getFirestore(app);
+// const auth = getAuth(app);
 
 export default function ComposerBox(props: any) {
+    const [content, setContent] = useState('');
+    const [tweetsData, setTweetsData] = useState([]);
+    const [shouldPost, setShouldPost] = useState(false); // State for triggering post
 
-    const [message, setMessage] = useState('');
-
-    const handleChange = (e: any) => {
-        setMessage(e.target.value);
-        adjustInputHeight(e.target);
-    };
+    const db = fb.getDatabase();
 
     const adjustInputHeight = (textArea: any) => {
         textArea.style.height = 'auto';
         textArea.style.height = `${textArea.scrollHeight}px`;
     };
 
-    const handlePost = () => {
+    const handleContent = (e: any) => {
+        setContent(e.target.value);
+        adjustInputHeight(e.target);
+    };
 
-        fb.handlePost(message, props.username)
-        setMessage(''); // Clear the message input
-    }
+    const handlePostClick = async () => {
+        await fb.handlePost(db, content, props.username, setTweetsData, tweetsData);
+        setContent('');
+         // Reset the flag
+
+    };
+
 
     return (
         <div className="box">
@@ -55,8 +61,8 @@ export default function ComposerBox(props: any) {
                 <textarea
                     className="input-bar"
                     placeholder="What's on your mind?"
-                    value={message}
-                    onChange={handleChange}
+                    value={content}
+                    onChange={handleContent}
                     rows={1}
                 />
             </div>
@@ -73,7 +79,7 @@ export default function ComposerBox(props: any) {
                         <FaEdit className="draft-icon" />
                         Draft
                     </div>
-                    <button className="post-button" onClick={handlePost}>
+                    <button className="post-button" onClick={handlePostClick}>
                         Post
                     </button>
                 </div>
@@ -81,4 +87,3 @@ export default function ComposerBox(props: any) {
         </div>
     );
 }
-
