@@ -1,14 +1,9 @@
-import Link from "next/link";
-import React from "react";
-import Navbar from "../Components/Navbar";
-import Trinity from '../Components/Trinity';
+import DM from "./DM";
 
 export default function Home() {
-
     return(
-        <div className="App">
-            <Trinity />
+        <div>
+            <DM />
         </div>
     )
-    
 }
