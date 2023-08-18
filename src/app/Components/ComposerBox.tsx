@@ -49,7 +49,6 @@ export default function ComposerBox(props: any) {
     const handlePostClick = async () => {
         await fb.handlePost(db, content, props.username, setTweetsData, tweetsData);
         setContent('');
-         // Reset the flag
 
     };
 

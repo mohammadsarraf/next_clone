@@ -1,0 +1,35 @@
+/* ChatBubble.css */
+.chat-bubble {
+  max-width: 70%;
+  padding: 2px 15px;
+  border-radius: 20px;
+  margin: 5px;
+  word-wrap: break-word;
+  font-size: 16px;
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+.sender.sent {
+  background-color: #007bff;
+  color: white;
+  align-self: flex-end;
+}
+
+.sender.received {
+  background-color: #007bff;
+  color: white;
+  align-self: flex-start;
+}
+
+.receiver.sent {
+  background-color: #f0f0f0;
+  color: black;
+  align-self: flex-end;
+}
+
+.receiver.received {
+  background-color: #f0f0f0;
+  color: black;
+  align-self: flex-start;
+}

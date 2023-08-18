@@ -1,46 +1,98 @@
-import React, {useState, useEffect} from "react"
+'use client'
+import React, { useState, useEffect } from "react"
 import './DM.css'
-import { FaUser, FaSearch} from "react-icons/fa"
+import { FaUser, FaSearch, FaArrowRight } from "react-icons/fa"
 import { TbUserSearch } from "react-icons/tb";
-import Contacts from "./Contacts";
-
+import Contact from "./Contact";
+import ContactsList from "./ContactsList";
+import { constants } from "buffer";
 
 export default function DM() {
+    const [isExpanded, setIsExpanded] = useState(true);
+    const [searched, setSearched] = useState("");
+    const [filteredContacts, setFilteredContacts] = useState([]);
 
-    const contacts = [
+    const [contacts, setContacts] = useState([
         {
             userName: "Moe-Sarraf",
-            status: "offline"
+            status: "offline",
         },
         {
             userName: "2MSTR000",
-            status: "offline"
-        },        
+            status: "offline",
+        },
         {
             userName: "KDLight",
-            status: "offline"
+            status: "offline",
         },
-    ]
+    ]);
 
-    return(
+    const handleIsExpanded = () => {
+        setIsExpanded(!isExpanded);
+    };
+
+    const handleAddFriend = () => {
+        const userName = prompt("UserName: ");
+        const status = prompt("Status: ");
+
+        // Create a new array with the new contact and update state
+        const newContacts = [
+            ...contacts,
+            {
+                userName: userName,
+                status: status,
+            },
+        ];
+
+        setContacts(newContacts);
+        setSearched(userName); // Update searched to trigger filtering
+    };
+
+    const handleFilter = (query) => {
+        if (!query) {
+            return contacts; // Return all contacts if query is empty
+        }
+        return contacts.filter((contact) => {
+            return contact.userName.toLowerCase().includes(query.toLowerCase());
+        });
+    };
+
+    const handleSearch = (e) => {
+        setSearched(e.target.value);
+    };
+
+    useEffect(() => {
+        const filtered = handleFilter(searched);
+        setFilteredContacts(filtered);
+    }, [searched]);
+
+    return (
         <div className="dm">
             <div className="user-card">
-                <div className="user-pf"><FaUser/></div>
+                <div className="user-pf"><FaUser /></div>
                 <div className="user-info">
                     <div className="displayName">Kevin Garvey</div>
                     <div className="userStatus">Online</div>
                 </div>
             </div>
             <div className="search">
-                <button><TbUserSearch/></button>
+                <button onClick={handleAddFriend}><TbUserSearch /></button>
                 <div className="search-bar">
-                    <input className='search-input' ></input>
+                    <input
+                        className='search-input'
+                        value={searched}
+                        onChange={handleSearch} // Listen to input changes
+                    />
                     <FaSearch />
                 </div>
             </div>
-            {contacts.map((contact) => (
-                <Contacts userName={contact.userName} status={contact.status}/>
-            ))}
+            <ContactsList
+                contacts={filteredContacts} // Make sure this is defined
+                listName={`Friends`}
+                listLength={contacts.length} // You can also use filteredContacts.length
+                isExpanded={isExpanded}
+                handleIsExpanded={handleIsExpanded}
+            />
         </div>
     )
 }

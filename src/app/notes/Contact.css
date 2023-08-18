@@ -1,0 +1,31 @@
+.contact-card {
+    display: flex;
+    align-items: center; /* Center items vertically */
+    transition: ease-in-out background-color 0.3s;
+    border-radius: 10px;
+}
+
+.contact-card:hover{
+    background-color: #8080801d;
+}
+.contact-card:hover {
+    cursor: pointer;
+}
+
+.contact-pf {
+    display: flex;
+    align-items: center; /* Center content vertically */
+    justify-content: center; /* Center content horizontally */
+    width: 50px; /* Adjust the width as needed */
+    height: 50px; /* Adjust the height as needed */
+    background-color: rebeccapurple; /* Just for visualization */
+    border-radius: 50%; /* Make it a circle */
+    margin: 10px; /* Add some spacing */
+    margin-left: 10px;
+}
+
+
+.contact-info{
+    padding-top: 10px;
+    padding-bottom: 10px;
+}

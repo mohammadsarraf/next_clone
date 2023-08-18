@@ -1,3 +1,7 @@
+.dm{
+    max-width: 300px;
+    margin-left: 10px;
+}
 .user-card {
     display: flex;
     align-items: center; /* Center items vertically */
@@ -15,7 +19,6 @@
     margin-left: 0px;
 
 }
-
 
 .user-info{
     padding-top: 10px;
@@ -85,4 +88,27 @@ button svg{
 .contact-info{
     padding-top: 10px;
     padding-bottom: 10px;
+}
+
+.friends-list {
+    display: flex;
+    align-items: center;
+    color: #ffffff;
+    width: auto;
+    outline: none;
+    border: none;
+    background-color: transparent;
+    font-size: 15px;
+}
+
+.friends-list:hover{
+    cursor: pointer;
+
+}
+
+.list-icon{
+    color: #ffffff;
+    height: 10px;
+    width: 10px;
+    margin-left: 5px;
 }

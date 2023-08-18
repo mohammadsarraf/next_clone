@@ -64,6 +64,27 @@ export const handlePost = async (db, content, username, setTweetsData, tweetsDat
     }
 };
 
+    export const handleChat = async (db, message, username, setConversation, conversation) => {
+        if (username && message) {
+            const newChat = {
+                timestamp: serverTimestamp(),
+                message,
+                username: username,
+            };
+
+            const chatRef = await addDoc(collection(db, "DM"), newChat);
+            const chatID = chatRef.id;
+            console.log(chatID)
+
+            const userTweetsRef = collection(db, "userConvo");
+            const userDocRef = doc(userTweetsRef, username);
+            const userTweetsCollectionRef = collection(userDocRef, "DM");
+            await setDoc(doc(userTweetsCollectionRef, chatID), newChat);
+
+            setConversation([newChat, ...conversation]);
+        }
+    };
+
 export const handleDisplayNameUpdate = async (user: any, displayName: any) => {
     console.log("Hello")
     if (user && displayName) {
