@@ -6,30 +6,30 @@ import "./ChatInputBar.css";
 import * as fb from '../functions/Class'
 
 
-export default function ChatInputBar(props) {
-  	const [conversation, setConversation] = useState('')
-	const [message, setMessage] = useState('')
-	const db = fb.getDatabase();
+export default function ChatInputBar({ message, handleMessage, handleSendClick }) {
 
-	const handleMessage = (e: any) => {
-        setMessage(e.target.value);
+    const handleKeyDown = (e) => {
+        if (e.key === 'Enter' && e.shiftKey) {
+            handleMessage(e); // Update the message state
+        } else if (e.key === 'Enter') {
+            e.preventDefault();
+            handleSendClick();
+        }
     };
-
-	const handleSendClick = async () => {
-		await fb.handleChat(db, message, "props.username", setConversation, conversation);
-		setMessage('');
-    };
-
-	return (
-		<div className="chat-input-bar">
-		<div className="input-container-chat">
-			<input type="text" 
-				placeholder="Type a message..." 
-				value={message} onChange={handleMessage}
-			/>
-			<div className="plus-icon"><FaPlus /></div>
-		</div>
-		<button className="send-button" onClick={handleSendClick}><FaPaperPlane /></button>
-		</div>
-	);
+	
+    return (
+        <div className="chat-input-bar">
+            <div className="input-container-chat">
+                <input
+                    type="text"
+                    placeholder="Type a message..."
+                    value={message}
+                    onChange={handleMessage}
+                    onKeyDown={handleKeyDown}
+                />
+                <div className="plus-icon"><FaPlus /></div>
+            </div>
+            <button className="send-button" onClick={handleSendClick}><FaPaperPlane /></button>
+        </div>
+    );
 }

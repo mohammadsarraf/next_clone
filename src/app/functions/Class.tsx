@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, doc, setDoc, addDoc, getDocs, serverTimestamp, where, query } from 'firebase/firestore';
+import { getFirestore, updateDoc, arrayUnion , collection, doc, setDoc, addDoc, getDoc, getDocs, serverTimestamp, where, query } from 'firebase/firestore';
 import { getAuth, signOut, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, updateProfile } from 'firebase/auth';
 import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 
@@ -64,26 +64,53 @@ export const handlePost = async (db, content, username, setTweetsData, tweetsDat
     }
 };
 
-    export const handleChat = async (db, message, username, setConversation, conversation) => {
-        if (username && message) {
-            const newChat = {
-                timestamp: serverTimestamp(),
-                message,
-                username: username,
-            };
+// import { arrayUnion } from "firebase/firestore"; // Import arrayUnion function
 
-            const chatRef = await addDoc(collection(db, "DM"), newChat);
-            const chatID = chatRef.id;
-            console.log(chatID)
+export const handleChat = async (db, message, FromUsername, ToUsername, setConversation, conversation) => {
+    if (FromUsername && ToUsername && message) {
+        const newChat = {
+            message,
+            fromUsername: FromUsername,
+            toUsername: ToUsername,
+        };
 
-            const userTweetsRef = collection(db, "userConvo");
-            const userDocRef = doc(userTweetsRef, username);
-            const userTweetsCollectionRef = collection(userDocRef, "DM");
-            await setDoc(doc(userTweetsCollectionRef, chatID), newChat);
+        const isFromUsernameFirst = FromUsername.localeCompare(ToUsername) <= 0;
+        const chatID = isFromUsernameFirst ? `${FromUsername} + ${ToUsername}` : `${ToUsername} + ${FromUsername}`;
 
-            setConversation([newChat, ...conversation]);
+        const chatDocRef = doc(collection(db, "Direct Messages"), chatID);
+        const chatDoc = await getDoc(chatDocRef);
+
+        if (chatDoc.exists()) {
+            const existingConversation = chatDoc.data().conversation || [];
+            const updatedConversation = [...existingConversation, newChat];
+
+            await updateDoc(chatDocRef, { conversation: updatedConversation });
+        } else {
+            await setDoc(chatDocRef, { conversation: [newChat] });
         }
-    };
+
+        const userTweetsCollectionRef = collection(db, "userConvo", FromUsername, "DM");
+        await setDoc(doc(userTweetsCollectionRef, chatID), newChat);
+
+        setConversation([newChat, ...conversation]);
+    }
+};
+
+export const fetchChat = async (db, fromUsername, toUsername) => {
+    const chatID = fromUsername.localeCompare(toUsername) <= 0
+        ? `${fromUsername} + ${toUsername}`
+        : `${toUsername} + ${fromUsername}`;
+
+    const chatDocRef = doc(collection(db, "Direct Messages"), chatID);
+    const chatDocSnap = await getDoc(chatDocRef);
+
+    if (chatDocSnap.exists()) {
+        const conversation = chatDocSnap.data().conversation || [];
+        return conversation;
+    } else {
+        return [];
+    }
+};
 
 export const handleDisplayNameUpdate = async (user: any, displayName: any) => {
     console.log("Hello")

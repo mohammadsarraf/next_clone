@@ -4,8 +4,8 @@ import Pv from "./Pv";
 export default function Home() {
     return(
         <div>
-            {/* <DM /> */}
-            <Pv />
+            <DM />
+            <Pv username={"Moe"}/>
         </div>
     )
 }
