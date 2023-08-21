@@ -6,14 +6,14 @@ import ChatBubble from "./ChatBubble";
 import ChatInputBar from "./ChatInputBar";
 import * as fb from '../functions/Class';
 
-export default function Pv(props) {
+export default function Pv(props: any) {
     const [conversation, setConversation] = useState([]);
     const [message, setMessage] = useState('');
     const db = fb.getDatabase();
     const fromUsername = props.username;
     const toUsername = "Kevin Garvey";
 	
-	const chatContainerRef = useRef(null);
+	const chatContainerRef: any = useRef(null);
     useEffect(() => {
         async function fetchAndSetConversation() {
             const chatConversation = await fb.fetchChat(db, fromUsername, toUsername);
@@ -22,7 +22,7 @@ export default function Pv(props) {
         fetchAndSetConversation();
     }, [db, fromUsername, toUsername]);
 
-    const handleMessage = (e) => {
+    const handleMessage = (e: any) => {
         setMessage(e.target.value);
     };
 
@@ -51,7 +51,7 @@ export default function Pv(props) {
                 <div className="more-options"><FaEllipsisV className="dragon"/></div>
             </div>
             <div className="chat-container" ref={chatContainerRef}>
-                {conversation.map((chat) => (
+                {conversation.map((chat: any) => (
                     <ChatBubble key={chat.id} message={chat.message} sender={true} sent={true} />
                 ))}
             </div>

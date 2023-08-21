@@ -6,14 +6,14 @@ import "./ChatInputBar.css";
 import * as fb from '../functions/Class'
 
 
-export default function ChatInputBar({ message, handleMessage, handleSendClick }) {
+export default function ChatInputBar(props: any) {
 
-    const handleKeyDown = (e) => {
+    const handleKeyDown = (e: any) => {
         if (e.key === 'Enter' && e.shiftKey) {
-            handleMessage(e); // Update the message state
+            props.handleMessage(e); // Update the message state
         } else if (e.key === 'Enter') {
             e.preventDefault();
-            handleSendClick();
+            props.handleSendClick();
         }
     };
 	
@@ -23,13 +23,13 @@ export default function ChatInputBar({ message, handleMessage, handleSendClick }
                 <input
                     type="text"
                     placeholder="Type a message..."
-                    value={message}
-                    onChange={handleMessage}
+                    value={props.message}
+                    onChange={props.handleMessage}
                     onKeyDown={handleKeyDown}
                 />
                 <div className="plus-icon"><FaPlus /></div>
             </div>
-            <button className="send-button" onClick={handleSendClick}><FaPaperPlane /></button>
+            <button className="send-button" onClick={props.handleSendClick}><FaPaperPlane /></button>
         </div>
     );
 }

@@ -26,6 +26,8 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const auth = getAuth(app);
 
+
+
 export default function Home() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -35,16 +37,19 @@ export default function Home() {
   const [profilePicture, setProfilePicture] = useState('');
   const [displayName, setDisplayName] = useState('');
 
-  const storage = getStorage(app);
+  interface user {
+  displayName: string | null;
+  // ... other properties you might have in the user object
+  }
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
+    const unsubscribe = onAuthStateChanged(auth, (user: any) => {
       setUser(user);
-      if (user) {
-        getProfilePictureUrl(user.uid)
-          .then((url) => setProfilePictureUrl(url))
-          .catch((error) => console.error(error));
-      }
+      // if (user) {
+      //   getProfilePictureUrl(user.uid)
+      //     .then((url) => setProfilePictureUrl(url))
+      //     .catch((error) => console.error(error));
+      // }
     });
 
     return () => unsubscribe();
@@ -68,40 +73,40 @@ export default function Home() {
     }
   };
 
-  const handleImageChange = (file) => {
-    if (user) {
-      uploadProfilePicture(user.uid, file)
-        .then(() => getProfilePictureUrl(user.uid))
-        .then((url) => setProfilePictureUrl(url))
-        .catch((error) => console.error('Error updating profile picture', error));
-    }
-  };
+  // const handleImageChange = (file: any) => {
+  //   if (user) {
+  //     uploadProfilePicture(user.uid, file)
+  //       .then(() => getProfilePictureUrl(user.uid))
+  //       .then((url) => setProfilePictureUrl(url))
+  //       .catch((error) => console.error('Error updating profile picture', error));
+  //   }
+  // };
 
-  const handleImageUpload = async () => {
-    if (selectedImage && user) {
-      try {
-        const url = await uploadProfilePicture(user.uid, selectedImage);
-        console.log('Image uploaded successfully', url);
-        setProfilePicture(url);
-        setSelectedImage(null);
-      } catch (error) {
-        console.error('Error uploading image', error);
-      }
-    }
-  };
+  // const handleImageUpload = async () => {
+  //   if (selectedImage && user) {
+  //     try {
+  //       const url = await uploadProfilePicture(user.uid, selectedImage);
+  //       console.log('Image uploaded successfully', url);
+  //       setProfilePicture(url);
+  //       setSelectedImage(null);
+  //     } catch (error) {
+  //       console.error('Error uploading image', error);
+  //     }
+  //   }
+  // };
 
-  const uploadProfilePicture = async (userId, file) => {
-    const storageRef = ref(storage, `profile_pictures/${userId}`);
-    const snapshot = await uploadBytes(storageRef, file);
-    const url = await getDownloadURL(snapshot.ref);
-    return url;
-  };
+  // const uploadProfilePicture = async (userId, file) => {
+  //   const storageRef = ref(storage, `profile_pictures/${userId}`);
+  //   const snapshot = await uploadBytes(storageRef, file);
+  //   const url = await getDownloadURL(snapshot.ref);
+  //   return url;
+  // };
 
-  const getProfilePictureUrl = async (userId) => {
-    const storageRef = ref(storage, `profile_pictures/${userId}`);
-    const url = await getDownloadURL(storageRef);
-    return url;
-  };
+  // const getProfilePictureUrl = async (userId) => {
+  //   const storageRef = ref(storage, `profile_pictures/${userId}`);
+  //   const url = await getDownloadURL(storageRef);
+  //   return url;
+  // };
 
   const updateDisplayName = async () => {
     if (user && displayName) {
@@ -138,7 +143,7 @@ export default function Home() {
             <div className='App'>
 
                 <Navbar />
-                <AppNavbar username={user.displayName} onImageChange={handleImageChange} onImageUpload={handleImageUpload} profilePicture={profilePicture} />
+                <AppNavbar username={"Moe" || ''} onImageChange={null} onImageUpload={null} profilePicture={profilePicture} />
                 <MainContent />
             </div>
 

@@ -1,6 +1,6 @@
 'use client';
 
-function Test(props) {
+function Test(props: any) {
     return (
         <div>
             {props.user ? (

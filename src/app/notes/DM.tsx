@@ -32,11 +32,11 @@ export default function DM() {
     };
 
     const handleAddFriend = () => {
-        const userName = prompt("UserName: ");
+        const userName: any = prompt("UserName: ");
         const status = prompt("Status: ");
 
         // Create a new array with the new contact and update state
-        const newContacts = [
+        const newContacts: any = [
             ...contacts,
             {
                 userName: userName,
@@ -48,7 +48,7 @@ export default function DM() {
         setSearched(userName); // Update searched to trigger filtering
     };
 
-    const handleFilter = (query) => {
+    const handleFilter = (query: any) => {
         if (!query) {
             return contacts; // Return all contacts if query is empty
         }
@@ -57,12 +57,12 @@ export default function DM() {
         });
     };
 
-    const handleSearch = (e) => {
+    const handleSearch = (e: any) => {
         setSearched(e.target.value);
     };
 
     useEffect(() => {
-        const filtered = handleFilter(searched);
+        const filtered: any = handleFilter(searched);
         setFilteredContacts(filtered);
     }, [searched]);
 

@@ -18,7 +18,7 @@ export default function ContactsList(props: any) {
                     <FaArrowDown className="list-icon"/>
                 </button>
                 {props.contacts.map((contact: any) => (
-                    <Contact userName={contact.userName} status={contact.status}/>
+                    <Contact key={contact.id} userName={contact.userName} status={contact.status}/>
                 ))}
             </div>
         ))

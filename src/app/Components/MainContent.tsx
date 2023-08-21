@@ -23,7 +23,7 @@ export default function MainContent(porps: any) {
         }
 
         fetchData();
-    }, [tweetsData])
+    }, [tweetsData, db])
 
     return(
         <div className='main-content'>

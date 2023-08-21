@@ -23,11 +23,11 @@ export const getDatabase = () => {
     return db
 }
 
-export const fetchTweets = async (db) => {
+export const fetchTweets = async (db: any) => {
     try {
         const tweetsSnapshot = await getDocs(collection(db, "tweets"));
 
-        const tweetsArray = [];
+        const tweetsArray: any = [];
         tweetsSnapshot.forEach((tweet) => {
             const tweetData = tweet.data();
             tweetData.tweetId = tweet.id;
@@ -41,7 +41,7 @@ export const fetchTweets = async (db) => {
     }
 };
 
-export const handlePost = async (db, content, username, setTweetsData, tweetsData) => {
+export const handlePost = async (db: any, content: any, username: any, setTweetsData: any, tweetsData: any) => {
     if (username && content) {
         const newTweet = {
             timestamp: serverTimestamp(),
@@ -66,7 +66,7 @@ export const handlePost = async (db, content, username, setTweetsData, tweetsDat
 
 // import { arrayUnion } from "firebase/firestore"; // Import arrayUnion function
 
-export const handleChat = async (db, message, FromUsername, ToUsername, setConversation, conversation) => {
+export const handleChat = async (db: any, message: any, FromUsername: any, ToUsername: any, setConversation: any, conversation: any) => {
     if (FromUsername && ToUsername && message) {
         const newChat = {
             message,
@@ -96,7 +96,7 @@ export const handleChat = async (db, message, FromUsername, ToUsername, setConve
     }
 };
 
-export const fetchChat = async (db, fromUsername, toUsername) => {
+export const fetchChat = async (db: any, fromUsername: any, toUsername: any) => {
     const chatID = fromUsername.localeCompare(toUsername) <= 0
         ? `${fromUsername} + ${toUsername}`
         : `${toUsername} + ${fromUsername}`;
