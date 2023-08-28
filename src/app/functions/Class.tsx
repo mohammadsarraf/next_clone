@@ -4,24 +4,21 @@ import { getAuth, signOut, createUserWithEmailAndPassword, signInWithEmailAndPas
 import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 
 const firebaseConfig = {
-    apiKey: "AIzaSyDfGtvjHibH_VQNi3fIFxoJEI-_RzbrHCw",
-    authDomain: "twitter-clone-10996.firebaseapp.com",
-    databaseURL: "https://twitter-clone-10996-default-rtdb.firebaseio.com",
-    projectId: "twitter-clone-10996",
-    storageBucket: "twitter-clone-10996.appspot.com",
-    messagingSenderId: "617659631276",
-    appId: "1:617659631276:web:e7e713dfc82f3573244109",
-    measurementId: "G-3FDM8VPR8Q"
+    apiKey: "AIzaSyBZk6c8h9y9av6p17XaK5KRjjxvobkI_-A",
+    authDomain: "nexttwitter-26380.firebaseapp.com",
+    projectId: "nexttwitter-26380",
+    storageBucket: "nexttwitter-26380.appspot.com",
+    messagingSenderId: "371231691643",
+    appId: "1:371231691643:web:8d11fe90652099e824a3de",
+    measurementId: "G-GS2CDH21SW"
 };
+
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const auth = getAuth(app);
 
 
-//User writing in composerBox
-export const getDatabase = () => {
-    return db
-}
+export const getDatabase = () => (db)
 
 export const fetchTweets = async (db: any) => {
     try {
@@ -63,8 +60,6 @@ export const handlePost = async (db: any, content: any, username: any, setTweets
         setTweetsData([newTweet, ...tweetsData]);
     }
 };
-
-// import { arrayUnion } from "firebase/firestore"; // Import arrayUnion function
 
 export const handleChat = async (db: any, message: any, FromUsername: any, ToUsername: any, setConversation: any, conversation: any) => {
     if (FromUsername && ToUsername && message) {
@@ -127,19 +122,16 @@ export const handleDisplayNameUpdate = async (user: any, displayName: any) => {
     }
 };
 
-// export async function getUserPosts(userId: string) {
-//     try {
-//         const userPostsRef = doc(db, 'userPosts', userId);
-//         const userPostsSnapshot = await getDocs(userPostsRef);
-
-//         if (userPostsSnapshot.exists()) {
-//             return userPostsSnapshot.data();
-//         } else {
-//             console.log('User has no posts.');
-//             return {};
-//         }
-//     } catch (error) {
-//         console.error('Error getting user posts', error);
-//         return {};
-//     }
-// }
+export const updateDisplayName = async (user, displayName) => {
+    if (user && displayName) {
+      try {
+        await updateProfile(user, {
+          displayName: displayName,
+          photoURL: null,
+        });
+        console.log('Display name updated successfully');
+      } catch (error) {
+        console.error('Error updating display name', error);
+      }
+    }
+  };

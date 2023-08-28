@@ -63,7 +63,7 @@ export default function DM() {
 
     useEffect(() => {
         const filtered: any = handleFilter(searched);
-        setFilteredContacts(filtered);
+        setFilteredContacts(filtered.sort());
     }, [searched]);
 
     return (
@@ -92,6 +92,7 @@ export default function DM() {
                 listLength={contacts.length} // You can also use filteredContacts.length
                 isExpanded={isExpanded}
                 handleIsExpanded={handleIsExpanded}
+                onClick={null}
             />
         </div>
     )

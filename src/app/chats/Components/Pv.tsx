@@ -4,7 +4,7 @@ import { FaUser, FaEllipsisV } from "react-icons/fa";
 import './Pv.css';
 import ChatBubble from "./ChatBubble";
 import ChatInputBar from "./ChatInputBar";
-import * as fb from '../functions/Class';
+import * as fb from '../../functions/Class';
 
 export default function Pv(props: any) {
     const [conversation, setConversation] = useState([]);
@@ -13,7 +13,7 @@ export default function Pv(props: any) {
     const fromUsername = props.username;
     const toUsername = "Kevin Garvey";
 	
-	const chatContainerRef: any = useRef(null);
+	const chatContainerRef = useRef(null);
     useEffect(() => {
         async function fetchAndSetConversation() {
             const chatConversation = await fb.fetchChat(db, fromUsername, toUsername);
@@ -22,7 +22,7 @@ export default function Pv(props: any) {
         fetchAndSetConversation();
     }, [db, fromUsername, toUsername]);
 
-    const handleMessage = (e: any) => {
+    const handleMessage = (e) => {
         setMessage(e.target.value);
     };
 
@@ -51,7 +51,7 @@ export default function Pv(props: any) {
                 <div className="more-options"><FaEllipsisV className="dragon"/></div>
             </div>
             <div className="chat-container" ref={chatContainerRef}>
-                {conversation.map((chat: any) => (
+                {conversation.map((chat) => (
                     <ChatBubble key={chat.id} message={chat.message} sender={true} sent={true} />
                 ))}
             </div>

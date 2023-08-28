@@ -3,7 +3,7 @@ import { SlFeed } from "react-icons/sl";
 import './Navbar.css';
 import Link from "next/link";
 
-export default function Navbar() {
+export default function Navbar(props: any) {
     return (
         <nav className="sideNavbar">
             <div className="button-container-back">
@@ -19,7 +19,7 @@ export default function Navbar() {
                 ></input>
             </div>
 
-            <Link className="button-container" href="/notes">
+            <Link className="button-container" href="/chats">
                 <FaHome className="button-icon" />
                 <p className="button-name">Home</p>
             </Link>

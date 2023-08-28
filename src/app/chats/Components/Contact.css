@@ -3,6 +3,8 @@
     align-items: center; /* Center items vertically */
     transition: ease-in-out background-color 0.3s;
     border-radius: 10px;
+    text-decoration: none;
+    color: #ffffff;
 }
 
 .contact-card:hover{

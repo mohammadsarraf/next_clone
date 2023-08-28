@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react"
 import Contact from "./Contact"
 import { FaUser, FaArrowRight, FaArrowDown } from "react-icons/fa"
+import Link from "next/link"
 
 
 export default function ContactsList(props: any) {
@@ -14,6 +15,7 @@ export default function ContactsList(props: any) {
             </div>
         ):(
             <div className="list">
+                
                 <button className="friends-list" onClick={props.handleIsExpanded}> {props.listName}(0,{props.listLength})
                     <FaArrowDown className="list-icon"/>
                 </button>
