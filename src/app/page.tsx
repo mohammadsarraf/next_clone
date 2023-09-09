@@ -9,11 +9,11 @@ export function HomePage() {
     const { currentUser } = useUser()
 
     if (!currentUser) {
-        return <div>Loading...</div>;
+        return <h1 className='flex text-8xl w-screen h-screen justify-center items-center'>Loading...</h1>
+;
     }
 
     return (
-
         <div>
             <Navtest />
             <MainContent user={currentUser.displayName || currentUser.email} /> 

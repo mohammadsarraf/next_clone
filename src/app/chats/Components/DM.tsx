@@ -1,11 +1,9 @@
 'use client'
 import React, { useState, useEffect } from "react"
-import './DM.css'
 import { FaUser, FaSearch, FaArrowRight } from "react-icons/fa"
 import { TbUserSearch } from "react-icons/tb";
 import Contact from "./Contact";
 import ContactsList from "./ContactsList";
-import { constants } from "buffer";
 
 export default function DM() {
     const [isExpanded, setIsExpanded] = useState(true);
@@ -67,23 +65,25 @@ export default function DM() {
     }, [searched]);
 
     return (
-        <div className="dm">
-            <div className="user-card">
-                <div className="user-pf"><FaUser /></div>
-                <div className="user-info">
-                    <div className="displayName">Kevin Garvey</div>
-                    <div className="userStatus">Online</div>
+        <div className=" w-fit bg-red-500 bg-opacity-5 px-3 border-t-2 border-l-2 border-gray-500">
+            <div className="flex items-center">
+                <div className="flex items-center justify-center w-12 h-12 bg-yellow-700 rounded-full "><FaUser /></div>
+                <div className="p-3 bg-opacity-5 bg-red-50 w-auto">
+                    <div className="text-white  ">Kevin Garvey</div>
+                    <div className="text-white  ">Online</div>
                 </div>
             </div>
-            <div className="search">
-                <button onClick={handleAddFriend}><TbUserSearch /></button>
-                <div className="search-bar">
+            <div className="flex my-3">
+                <button
+                    className=" flex items-center justify-center w-10 h-10 mr-3 rounded border-none outline-none  bg-white bg-opacity-5"
+                    onClick={handleAddFriend}><TbUserSearch className={`w-5 h-5 text-white`} /></button>
+                <div className="flex items-center bg-red-900 bg-opacity-5 bg-white rounded p-1">
                     <input
-                        className='search-input'
+                        className="flex-grow border-none outline-none bg-transparent text-white"
                         value={searched}
                         onChange={handleSearch} // Listen to input changes
                     />
-                    <FaSearch />
+                    <FaSearch className={`w-5 h-5 text-white`} />
                 </div>
             </div>
             <ContactsList
@@ -95,5 +95,6 @@ export default function DM() {
                 onClick={null}
             />
         </div>
+
     )
 }

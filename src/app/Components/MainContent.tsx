@@ -6,6 +6,8 @@ import Post from './Post';
 import * as fb from '../functions/Class';
 import NavApptest from './NavApptest';
 import Pv from '../chats/Components/Pv';
+import DM from '../chats/Components/DM';
+
 
 const content0 = `Well, this is interesting. #BaldursGate3 uses "Point & Click" movement on PC with a M&K. Which made me curious how that would even work on Consoles.I decided to test it with my controller and out it turns out the movement system completely changes while using a controller.`
 
@@ -28,7 +30,7 @@ export default function MainContent(porps: any) {
     }, [db])
 
     return (
-        <div className='flex flex-col h-screen ml-80'>
+        <div className='flex flex-col h-screen ml-76'>
             <NavApptest username={porps.user} />
 
             <div className='flex h-screen'>
@@ -37,13 +39,14 @@ export default function MainContent(porps: any) {
                     {tweetsData.map((tweet: any) => (
                         <div key={tweet.tweetId}>
                             <Post
-                                username={tweet.username}
+                                username={`username`}
                                 content={content0}
-                                timestamp='12h'
-                            />
-                        </div>
+                                timestamp={`12h`}/>
+
+                    </div>
                     ))}
                 </div>
+                {/* <DM /> */}
                 <Pv username={"Moe"} />
 
             </div>
