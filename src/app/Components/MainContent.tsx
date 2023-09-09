@@ -1,18 +1,20 @@
 'use client'
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import './MainContent.css'
-import ComposerBox  from './ComposerBox'
+import ComposerBox from './ComposerBox'
 import Post from './Post';
 import * as fb from '../functions/Class';
+import NavApptest from './NavApptest';
+import Pv from '../chats/Components/Pv';
 
-// const content0 = `Well, this is interesting. #BaldursGate3 uses "Point & Click" movement on PC with a M&K. Which made me curious how that would even work on Consoles.I decided to test it with my controller and out it turns out the movement system completely changes while using a controller.`
-    
+const content0 = `Well, this is interesting. #BaldursGate3 uses "Point & Click" movement on PC with a M&K. Which made me curious how that would even work on Consoles.I decided to test it with my controller and out it turns out the movement system completely changes while using a controller.`
+
 export default function MainContent(porps: any) {
     const [content, setContent] = useState([]);
-    const [refreshFlag, setRefreshFlag] = useState(false); 
+    const [refreshFlag, setRefreshFlag] = useState(false);
     const [tweetsData, setTweetsData] = useState([]);
     const db = fb.getDatabase();
-    const username = "2MSTR000"; 
+    const username = "2MSTR000";
 
 
 
@@ -23,21 +25,28 @@ export default function MainContent(porps: any) {
         }
 
         fetchData();
-    }, [tweetsData, db])
+    }, [db])
 
-    return(
-        <div className='main-content'>
-            <ComposerBox username={`2MSTR000`} onPostSubmit={() => setRefreshFlag(!refreshFlag)}/>
-            {/* <Post username={`John Doe`} content={content0} timestamp='12h'/> */}
-            {tweetsData.map((tweet: any) => (
-                <div key={tweet.tweetId}>
-                    <Post 
-                        username={tweet.username}
-                        content={tweet.content}
-                        timestamp='12h'
-                        />
+    return (
+        <div className='flex flex-col h-screen ml-80'>
+            <NavApptest username={porps.user} />
+
+            <div className='flex h-screen'>
+                <div className='ml-44 mr-44'>
+                    <ComposerBox username={`2MSTR000`} onPostSubmit={() => setRefreshFlag(!refreshFlag)} />
+                    {tweetsData.map((tweet: any) => (
+                        <div key={tweet.tweetId}>
+                            <Post
+                                username={tweet.username}
+                                content={content0}
+                                timestamp='12h'
+                            />
+                        </div>
+                    ))}
                 </div>
-            ))}
+                <Pv username={"Moe"} />
+
+            </div>
         </div>
     )
 }

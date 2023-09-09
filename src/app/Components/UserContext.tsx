@@ -32,9 +32,14 @@ export const useUser = () => {
     return context;
 };
 
-export const signInUser = async (username, password) => {
+export const signInUser = async (username: any, password: any) => {
     try {
-        await signInWithEmailAndPassword(auth, username, password);
+        const userCredential = await signInWithEmailAndPassword(auth, username, password);
+        const user = userCredential.user;
+
+        // Set the username in the user object
+        await updateProfile(user, { displayName: username });
+
         return { success: true };
     } catch (error) {
         console.error('Login failed', error);
@@ -52,7 +57,7 @@ export const signOutUser = async () => {
     }
 };
 
-export const setupAuthListener = (callback) => {
+export const setupAuthListener = (callback: any) => {
     return onAuthStateChanged(auth, callback);
 };
 
@@ -60,7 +65,7 @@ export const UserProvider = ({ children }) => {
     const [currentUser, setCurrentUser] = useState(null);
 
     useEffect(() => {
-        const unsubscribe = setupAuthListener((user) => {
+        const unsubscribe = setupAuthListener((user: any) => {
             setCurrentUser(user);
         });
 

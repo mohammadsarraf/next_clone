@@ -1,5 +1,5 @@
 "use client"
-import React, { useState, useEffect, useRef} from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { FaUser, FaEllipsisV } from "react-icons/fa";
 import './Pv.css';
 import ChatBubble from "./ChatBubble";
@@ -12,8 +12,8 @@ export default function Pv(props: any) {
     const db = fb.getDatabase();
     const fromUsername = props.username;
     const toUsername = "Kevin Garvey";
-	
-	const chatContainerRef = useRef(null);
+
+    const chatContainerRef = useRef(null);
     useEffect(() => {
         async function fetchAndSetConversation() {
             const chatConversation = await fb.fetchChat(db, fromUsername, toUsername);
@@ -27,34 +27,35 @@ export default function Pv(props: any) {
     };
 
     const handleSendClick = async () => {
-	    await fb.handleChat(db, message, fromUsername, toUsername, setConversation, conversation);
-		setMessage('');
+        await fb.handleChat(db, message, fromUsername, toUsername, setConversation, conversation);
+        setMessage('');
 
-		// Fetch the updated conversation and append new messages
-		const updatedConversation = await fb.fetchChat(db, fromUsername, toUsername);
-		setConversation(updatedConversation);
+        // Fetch the updated conversation and append new messages
+        const updatedConversation = await fb.fetchChat(db, fromUsername, toUsername);
+        setConversation(updatedConversation);
 
-		chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
+        chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
 
     };
 
     return (
-        <div className="Pv-page">
-            <div className="top-bar">
-                <div className="user-card">
-                    <div className="user-pf"><FaUser /></div>
-                    <div className="user-info">
-                        <div className="displayName">{toUsername}</div>
-                        <div className="userStatus">Online</div>
+        <div className="w-fit h-fit">
+            <div className="flex items-center justify-between bg-blue-100 bg-opacity-5 p-1">
+                <div className="flex items-center ">
+                    <div className="flex items-center justify-center w-14 h-14 bg-purple-800 rounded-full m-3 ml-0"><FaUser /></div>
+                    <div className="py-3">
+                        <div className="text-red-300">{toUsername}</div>
+                        <div className="text-blue-300">Online</div>
                     </div>
                 </div>
-                <div className="more-options"><FaEllipsisV className="dragon"/></div>
+                <div className="relative hover:cursor-pointer"><FaEllipsisV /></div>
             </div>
-            <div className="chat-container" ref={chatContainerRef}>
+            <div className="flex flex-col p-3 overflow-y-auto h-96 w-auto  scrollbar-thumb-gray-900 scrollbar-track-transparent scrollbar-thin bg-red-900 bg-opacity-10">
                 {conversation.map((chat) => (
-                    <ChatBubble key={chat.id} message={chat.message} sender={true} sent={true} />
+                    <ChatBubble key={chat.id} message={chat.message} />
                 ))}
             </div>
+
             <ChatInputBar
                 message={message}
                 handleMessage={handleMessage}

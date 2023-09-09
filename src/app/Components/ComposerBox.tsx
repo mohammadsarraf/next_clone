@@ -2,38 +2,12 @@ import React, { useState, useEffect } from 'react';
 import './ComposerBox.css';
 import * as fb from '../functions/Class';
 import { FaUser, FaCamera, FaImage, FaPaperclip, FaLocationArrow, FaSmile, FaEdit } from 'react-icons/fa';
-import { initializeApp } from 'firebase/app';
-import {
-    getFirestore,
-    doc,
-    setDoc,
-    getDoc,
-    serverTimestamp,
-} from 'firebase/firestore';
-import { getAuth } from 'firebase/auth';
-import { getDatabase } from 'firebase/database';
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-// const firebaseConfig = {
-//     apiKey: "AIzaSyDfGtvjHibH_VQNi3fIFxoJEI-_RzbrHCw",
-//     authDomain: "twitter-clone-10996.firebaseapp.com",
-//     databaseURL: "https://twitter-clone-10996-default-rtdb.firebaseio.com",
-//     projectId: "twitter-clone-10996",
-//     storageBucket: "twitter-clone-10996.appspot.com",
-//     messagingSenderId: "617659631276",
-//     appId: "1:617659631276:web:e7e713dfc82f3573244109",
-//     measurementId: "G-3FDM8VPR8Q"
-// };
-// const app = initializeApp(firebaseConfig);
-// const db = getFirestore(app);
-// const auth = getAuth(app);
 
 export default function ComposerBox(props: any) {
     const [content, setContent] = useState('');
     const [tweetsData, setTweetsData] = useState([]);
-    const [shouldPost, setShouldPost] = useState(false); // State for triggering post
-
+    const [shouldPost, setShouldPost] = useState(false);
     const db = fb.getDatabase();
 
     const adjustInputHeight = (textArea: any) => {
@@ -43,7 +17,6 @@ export default function ComposerBox(props: any) {
 
     const handleContent = (e: any) => {
         setContent(e.target.value);
-        adjustInputHeight(e.target);
     };
 
     const handlePostClick = async () => {
@@ -54,31 +27,30 @@ export default function ComposerBox(props: any) {
 
 
     return (
-        <div className="box">
-            <div className="top-bar">
-                <FaUser className="user-icon" />
-                <textarea
-                    className="input-bar"
+        <div className="border rounded-md bg-gray-900 opacity-90 mb-1">
+            <div className="flex items-center p-3">
+                <FaUser className="w-9 h-9 rounded-full bg-white mr-3 text-gray-600" />
+                <input
+                    className='flex-1 h-10 p-3  border-gray-300 rounded-r-full rounded-l-full outline-none text-black text-md bg-gray-600 bg-opacity-30'
                     placeholder="What's on your mind?"
                     value={content}
                     onChange={handleContent}
-                    rows={1}
                 />
             </div>
-            <div className="bot-bar">
-                <div className="left-div">
-                    <FaCamera className="actions" />
-                    <FaImage className="actions" />
-                    <FaPaperclip className="actions" />
-                    <FaLocationArrow className="actions" />
-                    <FaSmile className="actions" />
+            <div className="flex justify-between p-3">
+                <div className="flex p-3">
+                    <FaCamera className="m-2 my-0" />
+                    <FaImage className="m-2 my-0" />
+                    <FaPaperclip className="m-2 my-0" />
+                    <FaLocationArrow className="m-2 my-0" />
+                    <FaSmile className="m-2 my-0" />
                 </div>
-                <div className="right-div">
-                    <div className="draft">
-                        <FaEdit className="draft-icon" />
+                <div className="flex items-center">
+                    <div className="flex items-center p-2 bg-transparent rounded-md mr-3">
+                        <FaEdit className="mr-2" />
                         Draft
                     </div>
-                    <button className="post-button" onClick={handlePostClick}>
+                    <button className="p-2 bg-gray-600 bg-opacity-20 text-white border-none rounded-xl cursor-pointer w-24 " onClick={handlePostClick}>
                         Post
                     </button>
                 </div>
