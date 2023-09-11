@@ -3,7 +3,7 @@ import React from 'react';
 import { FaPiedPiperAlt, FaSearch, FaHome, FaShoppingCart, FaCalendarDay } from 'react-icons/fa';
 import { SlFeed } from 'react-icons/sl';
 
-export  default function SideNavbar() {
+export default function SideNavbar() {
     return (
         <div className="fixed flex flex-col bg-gray-900 opacity-90 border-r-2 border-gray-500 w-80 h-screen items-center">
             <Link

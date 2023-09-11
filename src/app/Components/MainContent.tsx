@@ -1,6 +1,5 @@
 'use client'
 import React, { useEffect, useState } from 'react';
-import './MainContent.css'
 import ComposerBox from './ComposerBox'
 import Post from './Post';
 import * as fb from '../functions/Class';
@@ -30,8 +29,8 @@ export default function MainContent(porps: any) {
     }, [db])
 
     return (
-        <div className='flex flex-col h-screen ml-76'>
-            <NavApptest username={porps.user} />
+        <div className='flex flex-col h-screen ml-80'>
+            <NavApptest username={porps.user} signOut={porps.signOut}/>
 
             <div className='flex h-screen'>
                 <div className='ml-44 mr-44'>

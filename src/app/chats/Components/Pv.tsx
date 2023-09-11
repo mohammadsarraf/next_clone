@@ -39,7 +39,7 @@ export default function Pv(props: any) {
     };
 
     return (
-        <div className="w-fit h-fit">
+        <div className="w-auto h-auto">
             <div className="flex items-center bg-blue-100 bg-opacity-5 px-1">
                 <div className="relative hover:cursor-pointer justify-start"> {/*Top BAR*/}
                     <MdArrowBackIosNew onClick={null}/>

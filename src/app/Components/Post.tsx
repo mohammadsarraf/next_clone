@@ -1,8 +1,5 @@
 'use client';
-
-import './Post.css';
-import { FaArrowUp, FaArrowDown, FaReply, FaUserAlt, FaThumbsUp, FaComment, FaShare, FaEllipsisV, FaUser, FaImage, FaSmile, FaMapMarkerAlt, } from 'react-icons/fa';
-import Image from 'next/image';
+import { FaThumbsUp, FaComment, FaShare, FaEllipsisV } from 'react-icons/fa';
 import React, { useState } from 'react';
 
 interface Props {
@@ -21,14 +18,16 @@ const Post: React.FC<Props> = ({ username, content, timestamp }) => {
     return (
         // (true ? (
         <>
-            <div className=" flex flex-col w-fit rounded-xl p-3 bg-gray-900 bg-opacity-20 box-border border border-gray-500 mb-5">
-                <div className="flex items-center">
-                    <div className='w-16 h-16 bg-white rounded-full mr-3'>{/* <FaUserAlt /> */}</div>
-                    <div className='user-info'>
-                        <div className='ml-1 font-bold'>{username}</div>
-                        <div className='ml-1'>{timestamp}</div>
+            <div className=" flex flex-col w-fit rounded-xl p-3 bg-gray-900 opacity-90 box-border border border-gray-500 mb-5">
+                <div className="flex items-center justify-between">
+                    <div className='flex items-center justify-center'>
+                        <div className='w-16 h-16 bg-white rounded-full mr-3'>{/* <FaUserAlt /> */}</div>
+                        <div className='user-info'>
+                            <div className='ml-1 font-bold'>{username}</div>
+                            <div className='ml-1'>{timestamp}</div>
+                        </div>
                     </div>
-                    <div className='w-5 h-5 bg-transparent'>
+                    <div className=' w-5 h-5 bg-transparent '>
                         <FaEllipsisV />
                     </div>
                 </div>

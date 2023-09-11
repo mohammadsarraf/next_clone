@@ -26,7 +26,7 @@ export default function ComposerBox(props: any) {
 
 
 	return (
-		<div className=" border border-gray-500 rounded-md bg-gray-900 bg-opacity-20 mb-10">
+		<div className=" border border-gray-500 rounded-md bg-gray-900 opacity-90 mb-10">
 			<div className="flex items-center p-3">
 				<FaUser className="w-12 h-12 rounded-full bg-white mr-3 text-white" />
 				<input
