@@ -6,6 +6,7 @@ import * as fb from '../functions/Class';
 import NavApptest from './NavApptest';
 import Pv from '../chats/Components/Pv';
 import DM from '../chats/Components/DM';
+import Social from '../chats/Components/Social';
 
 
 const content0 = `Well, this is interesting. #BaldursGate3 uses "Point & Click" movement on PC with a M&K. Which made me curious how that would even work on Consoles.I decided to test it with my controller and out it turns out the movement system completely changes while using a controller.`
@@ -46,7 +47,8 @@ export default function MainContent(porps: any) {
                     ))}
                 </div>
                 {/* <DM /> */}
-                <Pv username={"Moe"} />
+                {/* <Pv username={"Moe"} /> */}
+                <Social />
 
             </div>
         </div>

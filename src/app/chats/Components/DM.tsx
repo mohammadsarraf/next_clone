@@ -1,14 +1,16 @@
-'use client'
-import React, { useState, useEffect } from "react"
-import { FaUser, FaSearch, FaArrowRight } from "react-icons/fa"
+import React, { useState, useEffect } from "react";
+import { FaUser, FaSearch } from "react-icons/fa";
 import { TbUserSearch } from "react-icons/tb";
-import Contact from "./Contact";
 import ContactsList from "./ContactsList";
 
-export default function DM() {
+export default function DM(props) {
     const [isExpanded, setIsExpanded] = useState(true);
     const [searched, setSearched] = useState("");
     const [filteredContacts, setFilteredContacts] = useState([]);
+
+    const handleUserClick = (userName) => {
+        props.onUserClick(userName);
+    };
 
     const [contacts, setContacts] = useState([
         {
@@ -30,11 +32,11 @@ export default function DM() {
     };
 
     const handleAddFriend = () => {
-        const userName: any = prompt("UserName: ");
+        const userName = prompt("UserName: ");
         const status = prompt("Status: ");
 
         // Create a new array with the new contact and update state
-        const newContacts: any = [
+        const newContacts = [
             ...contacts,
             {
                 userName: userName,
@@ -46,7 +48,7 @@ export default function DM() {
         setSearched(userName); // Update searched to trigger filtering
     };
 
-    const handleFilter = (query: any) => {
+    const handleFilter = (query) => {
         if (!query) {
             return contacts; // Return all contacts if query is empty
         }
@@ -55,17 +57,17 @@ export default function DM() {
         });
     };
 
-    const handleSearch = (e: any) => {
+    const handleSearch = (e) => {
         setSearched(e.target.value);
     };
 
     useEffect(() => {
-        const filtered: any = handleFilter(searched);
+        const filtered = handleFilter(searched);
         setFilteredContacts(filtered.sort());
     }, [searched]);
 
     return (
-        <div className=" w-fit bg-red-500 bg-opacity-5 px-3 border-t-2 border-l-2 border-gray-500">
+        <div className="w-fit bg-red-500 bg-opacity-5 px-3 border-t-2 border-l-2 border-gray-500">
             <div className="flex items-center">
                 <div className="flex items-center justify-center w-12 h-12 bg-yellow-700 rounded-full "><FaUser /></div>
                 <div className="p-3 bg-opacity-5 bg-red-50 w-auto">
@@ -75,7 +77,7 @@ export default function DM() {
             </div>
             <div className="flex my-3">
                 <button
-                    className=" flex items-center justify-center w-10 h-10 mr-3 rounded border-none outline-none  bg-white bg-opacity-5"
+                    className="flex items-center justify-center w-10 h-10 mr-3 rounded border-none outline-none  bg-white bg-opacity-5"
                     onClick={handleAddFriend}><TbUserSearch className={`w-5 h-5 text-white`} /></button>
                 <div className="flex items-center bg-red-900 bg-opacity-5 bg-white rounded p-1">
                     <input
@@ -87,14 +89,13 @@ export default function DM() {
                 </div>
             </div>
             <ContactsList
-                contacts={filteredContacts} // Make sure this is defined
+                contacts={filteredContacts}
                 listName={`Friends`}
-                listLength={contacts.length} // You can also use filteredContacts.length
+                listLength={contacts.length}
                 isExpanded={isExpanded}
                 handleIsExpanded={handleIsExpanded}
-                onClick={null}
+                handleClick={props.handleClick}
             />
         </div>
-
-    )
+    );
 }

@@ -1,7 +1,7 @@
 "use client"
 import React, { useState, useEffect, useRef } from "react";
 import { FaUser, FaEllipsisV } from "react-icons/fa";
-import {MdArrowBackIosNew} from 'react-icons/md'
+import { MdArrowBackIosNew } from 'react-icons/md'
 import ChatBubble from "./ChatBubble";
 import ChatInputBar from "./ChatInputBar";
 import * as fb from '../../functions/Class';
@@ -11,7 +11,7 @@ export default function Pv(props: any) {
     const [message, setMessage] = useState('');
     const db = fb.getDatabase();
     const fromUsername = props.username;
-    const toUsername = "Kevin Garvey";
+    const toUsername = props.contact;
 
     const chatContainerRef = useRef(null);
     useEffect(() => {
@@ -42,7 +42,7 @@ export default function Pv(props: any) {
         <div className="w-auto h-auto">
             <div className="flex items-center bg-blue-100 bg-opacity-5 px-1">
                 <div className="relative hover:cursor-pointer justify-start"> {/*Top BAR*/}
-                    <MdArrowBackIosNew onClick={null}/>
+                    <MdArrowBackIosNew onClick={props.handleReturn} />
                 </div>
                 <div className="flex items-center w-full ml-1">
                     <div className="flex items-center justify-center w-14 h-14 bg-purple-800 rounded-full m-3 ml-0"> {/*Pf picture*/}
