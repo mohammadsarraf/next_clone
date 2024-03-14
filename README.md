@@ -1,34 +1,18 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Tic-Tac-Toe
+This repository contains the source code for a Tic Tac Toe game implemented using ReactJS. The game allows two players to play Tic Tac Toe on a 9-square board, with each player taking turns to place their mark (random number determind by a dice). The game finishes when a player has no space left on their board, and the winner is the player with the higher point. The game also includes a dice feature, where it automatically rolls a number for the player after a move has been made.
 
-## Getting Started
+# Rules
+The game is played between two players, each with their own 3x3 board. Player One starts the game by rolling the dice and playing the number that is shown on it in any of the columns on their board. The next turn goes to the other player. The game continues until one of the players fills their board. The player with the highest score at the end of the game is declared the winner.
 
-First, run the development server:
+The score is calculated by adding the numbers in each column and adding the total points of all three columns together. If all the numbers in a column are the same, the score for that column is calculated by simply adding the three numbers. If there are two of the same numbers and a third different number, the score for that column is calculated by multiplying the repeated number by 4 and adding the result to the third number. If all three numbers are the same, the score is calculated by multiplying the repeated number by 9.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+If at any point in the game a player plays a number that is the same as one in the other player's column, the second player loses all instances of that number in that column. This rule is in place to reward players for taking risks and having repeated numbers in their columns.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+# Technology Stack
+ReactJS
+CSS
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+# Contributing
+If you are interested in contributing to this project, feel free to open a pull request or create an issue.
