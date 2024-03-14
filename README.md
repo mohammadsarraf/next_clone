@@ -12,7 +12,10 @@ If at any point in the game a player plays a number that is the same as one in t
 
 # Technology Stack
 ReactJS
+NextJS
 CSS
+Tailwind CSS
+Firebase
 
 # Contributing
 If you are interested in contributing to this project, feel free to open a pull request or create an issue.
